@@ -8,10 +8,10 @@ const Habits = () => {
   ]);
 
   let [priorityFilter, setPriorityFilter] = useState("all");
-  let [sortOrder, setSortOrder] = useState("asc");
+  let [sortOrder, setSortOrder] = useState("none");
 
   let addHabit = () => {
-    let newHabit = { habit: "New Habit", streak: 0, priority: "medium" };
+    let newHabit = { habit: "New Habit", streak: 0, priority: "low" };
     setHabits([...habits, newHabit]);
   };
 
@@ -59,9 +59,10 @@ const Habits = () => {
   let compareStreaks = (a, b) => {
     if (sortOrder === "asc") {
       return a.streak - b.streak;
-    } else {
+    } else if (sortOrder === "desc") {
       return b.streak - a.streak;
     }
+    return 0; // No sorting
   };
 
   let sortedHabits = habits.filter(filterByPriority).sort(compareStreaks);
@@ -70,7 +71,6 @@ const Habits = () => {
     <>
       <h1>Habits</h1>
       <div>
-
         <label htmlFor="priorityFilter">Filter by Priority:</label>
         <select id="priorityFilter" value={priorityFilter} onChange={handleFilterChange}>
           <option value="all">All</option>
@@ -80,10 +80,10 @@ const Habits = () => {
 
         <label htmlFor="sortOrder">Sort by Streaks:</label>
         <select id="sortOrder" value={sortOrder} onChange={handleSortChange}>
+          <option value="none">None</option>
           <option value="asc">Ascending</option>
           <option value="desc">Descending</option>
         </select>
-
       </div>
       <button onClick={addHabit}>Add New Habit</button>
       {sortedHabits.map((habit, index) => (

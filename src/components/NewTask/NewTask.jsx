@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import styles from "./NewTask.module.css"
 
 const NewTask = ({ tasks, setTasks }) => {
   const [title, setTitle] = useState("");
@@ -43,7 +44,7 @@ const NewTask = ({ tasks, setTasks }) => {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <h2> Create New Task </h2>
       <form onSubmit={handleFormSubmit}>
         <label> Title: </label>
@@ -69,11 +70,11 @@ const NewTask = ({ tasks, setTasks }) => {
         <label> Type of Task: </label>
         <select value={taskType} onChange={(e) => setTaskType(e.target.value)}>
           <option value=""> Select Type </option>
-          <option value="household">Household Chores</option>
-          <option value="social">Social Activity</option>
-          <option value="work">Work-related Task</option>
-          <option value="school">School-related Task</option>
-          <option value="leisure">Leisure Activity</option>
+          <option value="Household">Household Chores</option>
+          <option value="Social">Social Activity</option>
+          <option value="Work">Work-related Task</option>
+          <option value="School">School-related Task</option>
+          <option value="Leisure">Leisure Activity</option>
         </select>
         <br />
         <button type="button" onClick={() => setTitle(suggestedActivity)}>
@@ -84,24 +85,6 @@ const NewTask = ({ tasks, setTasks }) => {
           Clear Fields
         </button>
       </form>
-
-      <div>
-        <h2> Tasks </h2>
-        {tasks.length === 0 ? (
-          <p>No tasks yet.</p>
-        ) : (
-          <ul>
-            {tasks.map((task, index) => (
-              <li key={index}>
-                <strong>Title: {task.title}</strong>
-                <p> Description: {task.description}</p>
-                <p>Time Estimate: {task.timeEstimate}</p>
-                <p>Type: {task.taskType}</p>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
     </div>
   );
 };

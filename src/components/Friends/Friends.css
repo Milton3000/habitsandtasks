@@ -1,0 +1,33 @@
+.friend {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.friend:hover {
+  background-color: #f0f0f0;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.name {
+  font-weight: bold;
+}
+
+.details {
+  margin-left: 60px;
+  background-color: #f9f9f9;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

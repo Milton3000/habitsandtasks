@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styles from "./NewTask.module.css"
+import styles from "../NewTask/NewTask.css"
 
 const NewTask = ({ tasks, setTasks }) => {
   const [title, setTitle] = useState("");
@@ -33,6 +33,8 @@ const NewTask = ({ tasks, setTasks }) => {
     };
 
     setTasks((prevTasks) => [...prevTasks, newTask]);
+    alert("Task created successfully!");
+    handleClearFields();
   };
 
   const handleClearFields = () => {
@@ -44,44 +46,47 @@ const NewTask = ({ tasks, setTasks }) => {
   };
 
   return (
-    <div className={styles.container}>
-      <h2> Create New Task </h2>
-      <form onSubmit={handleFormSubmit}>
-        <label> Title: </label>
-        <input
+    <div className="newtask-container">
+      <h2>Create New Task</h2>
+      <form className="newtask-form" onSubmit={handleFormSubmit}>
+        <label className="newtask-label">Title:</label>
+        <input className="newtask-input"
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        <br />
-        <label> Description: </label>
-        <textarea
+
+        <label className="newtask-label">Description:</label>
+        <textarea className="newtask-textarea"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-        <br />
-        <label> Estimated Time: </label>
-        <input
+
+        <label className="newtask-label">Estimated Time:</label>
+        <input className="newtask-input"
           type="number"
           value={timeEstimate}
           onChange={(e) => setTimeEstimate(e.target.value)}
         />
-        <br />
-        <label> Type of Task: </label>
-        <select value={taskType} onChange={(e) => setTaskType(e.target.value)}>
-          <option value=""> Select Type </option>
+
+        <label className="newtask-label">Type of Task:</label>
+        <select className="newtask-select"
+          value={taskType}
+          onChange={(e) => setTaskType(e.target.value)}
+        >
+          <option value="">Select Type</option>
           <option value="Household">Household Chores</option>
           <option value="Social">Social Activity</option>
           <option value="Work">Work-related Task</option>
           <option value="School">School-related Task</option>
           <option value="Leisure">Leisure Activity</option>
         </select>
-        <br />
-        <button type="button" onClick={() => setTitle(suggestedActivity)}>
+
+        <button className="newtask-button" type="button" onClick={() => setTitle(suggestedActivity)}>
           Suggest Task
         </button>
-        <button type="submit">Create Task</button>
-        <button type="button" onClick={handleClearFields}>
+        <button className="newtask-button" type="submit">Create Task</button>
+        <button className="newtask-button" type="button" onClick={handleClearFields}>
           Clear Fields
         </button>
       </form>

@@ -11,7 +11,7 @@ const Home = ({ tasks }) => {
           <ListGroup.Item key={index} className="mb-3">
             <h4 className="mb-2">Title: {task.title}</h4>
             <p>Description: {task.description}</p>
-            <p>Time Estimate: {task.timeEstimate} minutes</p>
+            <p>Estimated Time: {task.timeEstimate} minutes</p>
             <p>Type: {task.taskType}</p>
             {task.completed ? (
               <p className="text-success">Completed</p>

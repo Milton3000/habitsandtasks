@@ -64,25 +64,23 @@ const Tasks = ({ tasks, setTasks }) => {
     : tasks;
 
   return (
-    <div className="container text-center mt-4">
-      <nav>
-        <ul>
-          <li>
-            <Link to="/tasks/new">New Task</Link>
-          </li>
-        </ul>
-      </nav>
-
-      <div>
+      <div className="container text-center mt-4">
         {/* OUTLET HÄR, ANVÄNDS I PARENT ROUTE FÖR ATT RENDERA CHILD ROUTE ELEMENTS */}
         <div>
           <Outlet />
         </div>
 
-        <div className="row justify-content-center mt-4">
+        <div>
           <h2>Task List</h2>
         </div>
-
+        <nav className="text-center mt-4">
+        <ul className="nav justify-content-center">
+          <li className="nav-item">
+            <Link to="/tasks/new" className="nav-link fs-4">New Task</Link>
+          </li>
+        </ul>
+      </nav>
+      
         <div className="row mt-4">
           <div className="col-md-4">
             <div className="form-floating">
@@ -128,7 +126,7 @@ const Tasks = ({ tasks, setTasks }) => {
                   <li key={index}>
                     <strong> Title: {task.title}</strong>
                     <p> Description: {task.description}</p>
-                    <p> Time Estimate: {task.timeEstimate}</p>
+                    <p>Estimated Time: {task.timeEstimate} minutes</p>
                     <p> Type: {task.taskType}</p>
                     <button
                       className={
@@ -166,10 +164,10 @@ const Tasks = ({ tasks, setTasks }) => {
                 .filter((task) => task.completed)
                 .map((task, index) => (
                   <li key={index}>
-                    <strong>Title: {task.title}</strong>
-                    <p>Description: {task.description}</p>
-                    <p>Time Estimate: {task.timeEstimate}</p>
-                    <p>Type: {task.taskType}</p>
+                    <strong> Title: {task.title}</strong>
+                    <p> Description: {task.description}</p>
+                    <p> Estimated Time: {task.timeEstimate} minutes</p>
+                    <p> Type: {task.taskType}</p>
                     <button
                       className="text-success"
                       onClick={() => handleUntoggleTask(index)}
@@ -198,7 +196,7 @@ const Tasks = ({ tasks, setTasks }) => {
           </div>
         </div>
       </div>
-    </div>
+
   );
 };
 

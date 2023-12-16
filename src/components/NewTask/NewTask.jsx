@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 
-const NewTask = () => {
+const NewTask = ({ tasks, setTasks }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [timeEstimate, setTimeEstimate] = useState("");
   const [taskType, setTaskType] = useState("");
   const [suggestedActivity, setSuggestedActivity] = useState("");
-  const [tasks, setTasks] = useState([]); // New state för task storage.
 
   useEffect(() => {
     const fetchActivity = async () => {
@@ -94,8 +93,8 @@ const NewTask = () => {
           <ul>
             {tasks.map((task, index) => (
               <li key={index}>
-                <strong>{task.title}</strong>
-                <p>{task.description}</p>
+                <strong>Title: {task.title}</strong>
+                <p> Description: {task.description}</p>
                 <p>Time Estimate: {task.timeEstimate}</p>
                 <p>Type: {task.taskType}</p>
               </li>

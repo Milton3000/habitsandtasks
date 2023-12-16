@@ -1,4 +1,4 @@
-.container {
+/* .container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
@@ -9,4 +9,13 @@
 .toggle {
     display:flex;
     justify-content: center;
-}
+} */
+
+nav ul {
+    list-style-type: none;
+  }
+  
+
+  ul {
+    list-style-type: none;
+  }

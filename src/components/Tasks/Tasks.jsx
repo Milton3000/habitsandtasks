@@ -64,7 +64,7 @@ const Tasks = ({ tasks, setTasks }) => {
     : tasks;
 
   return (
-    <div>
+    <div className="container text-center mt-4">
       <nav>
         <ul>
           <li>
@@ -73,106 +73,129 @@ const Tasks = ({ tasks, setTasks }) => {
         </ul>
       </nav>
 
-{/* OUTLET HÄR, ANVÄNDS I PARENT ROUTE FÖR ATT RENDERA CHILD ROUTE ELEMENTS */}
       <div>
-        <Outlet />
-      </div>
-
-      <div className={styles.container}>
-        <h2>Task List</h2>
-        <div className="form-floating">
-          <select className="form-select" id="floatingSelect"  onChange={(e) => handleFilterCategory(e.target.value)}>
-            <option value="">All</option>
-            <option value="Household">Household Chores</option>
-            <option value="Social">Social Activity</option>
-            <option value="Work">Work-related Task</option>
-            <option value="School">School-related Task</option>
-            <option value="Leisure">Leisure Activity</option> 
-          </select>
-          <label for="floatingSelect">Filter by Category</label>
-        </div>
-<div className="d-flex justify-content-center">
+        {/* OUTLET HÄR, ANVÄNDS I PARENT ROUTE FÖR ATT RENDERA CHILD ROUTE ELEMENTS */}
         <div>
-          <button className="btn btn-sm btn-outline-info m-2" onClick={handleSortTitle}>Sort by Title</button>
-        </div>
-        <div>
-          <button className="btn btn-sm btn-outline-info m-2" onClick={handleSortTime}>Sort by Time</button>
-        </div>
-        </div>
-        <div>
-          <h3>Ongoing Tasks</h3>
-          <ul>
-            {filteredTasks
-              .filter((task) => !task.completed)
-              .map((task, index) => (
-                <li key={index}>
-                  <strong>Title: {task.title}</strong>
-                  <p>Description: {task.description}</p>
-                  <p>Time Estimate: {task.timeEstimate}</p>
-                  <p>Type: {task.taskType}</p>
-                  <button
-                    className={task.completed ? "text-success" : "text-danger"}
-                    onClick={() => handleCompleteTask(index)}
-                  >
-                    {task.completed ? "Completed" : "Not Completed"}
-                  </button>
-                  <button onClick={() => handleDeleteTask(index)}>
-                    Delete
-                  </button>
-                  <button
-                    onClick={() => {
-                      const updatedTask = prompt(
-                        "Edit task:",
-                        JSON.stringify(task)
-                      );
-                      if (updatedTask) {
-                        handleEditTask(index, JSON.parse(updatedTask));
-                      }
-                    }}
-                  >
-                    Edit
-                  </button>
-                </li>
-              ))}
-          </ul>
+          <Outlet />
         </div>
 
-        <div>
-          <h3>Completed Tasks</h3>
-          <ul>
-            {filteredTasks
-              .filter((task) => task.completed)
-              .map((task, index) => (
-                <li key={index}>
-                  <strong>Title: {task.title}</strong>
-                  <p>Description: {task.description}</p>
-                  <p>Time Estimate: {task.timeEstimate}</p>
-                  <p>Type: {task.taskType}</p>
-                  <button
-                    className="text-success"
-                    onClick={() => handleUntoggleTask(index)}
-                  >
-                    Completed
-                  </button>
-                  <button onClick={() => handleDeleteTask(index)}>
-                    Delete
-                  </button>
-                  <button
-                    onClick={() => {
-                      const updatedTask = prompt(
-                        "Edit task:",
-                        JSON.stringify(task)
-                      );
-                      if (updatedTask) {
-                        handleEditTask(index, JSON.parse(updatedTask));
+        <div className="row justify-content-center mt-4">
+          <h2>Task List</h2>
+        </div>
+
+        <div className="row mt-4">
+          <div className="col-md-4">
+            <div className="form-floating">
+              <select
+                className="form-select"
+                id="floatingSelect"
+                onChange={(e) => handleFilterCategory(e.target.value)}
+              >
+                <option value="">All</option>
+                <option value="Household">Household Chores</option>
+                <option value="Social">Social Activity</option>
+                <option value="Work">Work-related Task</option>
+                <option value="School">School-related Task</option>
+                <option value="Leisure">Leisure Activity</option>
+              </select>
+              <label htmlFor="floatingSelect">Filter by Category</label>
+            </div>
+          </div>
+
+          <div className="col-md-4">
+            <button
+              className="btn btn-sm btn-outline-info m-2"
+              onClick={handleSortTitle}
+            >
+              Sort by Title
+            </button>
+            <button
+              className="btn btn-sm btn-outline-info m-2"
+              onClick={handleSortTime}
+            >
+              Sort by Time
+            </button>
+          </div>
+        </div>
+
+        <div className="row mt-4">
+          <div className="col-md-6">
+            <h3>Ongoing Tasks</h3>
+            <ul>
+              {filteredTasks
+                .filter((task) => !task.completed)
+                .map((task, index) => (
+                  <li key={index}>
+                    <strong> Title: {task.title}</strong>
+                    <p> Description: {task.description}</p>
+                    <p> Time Estimate: {task.timeEstimate}</p>
+                    <p> Type: {task.taskType}</p>
+                    <button
+                      className={
+                        task.completed ? "text-success" : "text-danger"
                       }
-                    }}
-                  >
-                    Edit
-                  </button>
-                </li>
-              ))}
-          </ul>
+                      onClick={() => handleCompleteTask(index)}
+                    >
+                      {task.completed ? "Completed" : "Not Completed"}
+                    </button>
+                    <button onClick={() => handleDeleteTask(index)}>
+                      Delete
+                    </button>
+                    <button
+                      onClick={() => {
+                        const updatedTask = prompt(
+                          "Edit task:",
+                          JSON.stringify(task)
+                        );
+                        if (updatedTask) {
+                          handleEditTask(index, JSON.parse(updatedTask));
+                        }
+                      }}
+                    >
+                      Edit
+                    </button>
+                  </li>
+                ))}
+            </ul>
+          </div>
+
+          <div className="col-md-6">
+            <h3>Completed Tasks</h3>
+            <ul>
+              {filteredTasks
+                .filter((task) => task.completed)
+                .map((task, index) => (
+                  <li key={index}>
+                    <strong>Title: {task.title}</strong>
+                    <p>Description: {task.description}</p>
+                    <p>Time Estimate: {task.timeEstimate}</p>
+                    <p>Type: {task.taskType}</p>
+                    <button
+                      className="text-success"
+                      onClick={() => handleUntoggleTask(index)}
+                    >
+                      Completed
+                    </button>
+                    <button onClick={() => handleDeleteTask(index)}>
+                      Delete
+                    </button>
+                    <button
+                      onClick={() => {
+                        const updatedTask = prompt(
+                          "Edit task:",
+                          JSON.stringify(task)
+                        );
+                        if (updatedTask) {
+                          handleEditTask(index, JSON.parse(updatedTask));
+                        }
+                      }}
+                    >
+                      Edit
+                    </button>
+                  </li>
+                ))}
+            </ul>
+          </div>
         </div>
       </div>
     </div>

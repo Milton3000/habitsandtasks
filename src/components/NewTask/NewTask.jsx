@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styles from "../NewTask/NewTask.css"
+import styles from "../NewTask/NewTask.css";
 
 const NewTask = ({ tasks, setTasks }) => {
   const [title, setTitle] = useState("");
@@ -50,27 +50,34 @@ const NewTask = ({ tasks, setTasks }) => {
       <h2> Create New Task </h2>
       <form className="newtask-form" onSubmit={handleFormSubmit}>
         <label className="newtask-label">Title:</label>
-        <input className="newtask-title-input"
+        <input
+          className="newtask-title-input"
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          placeholder="Enter task title"
         />
 
         <label className="newtask-label">Description:</label>
-        <textarea className="newtask-textarea"
+        <textarea
+          className="newtask-textarea"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
+          placeholder="Enter task description"
         />
 
         <label className="newtask-label">Estimated Time:</label>
-        <input className="newtask-time-input"
+        <input
+          className="newtask-time-input"
           type="number"
           value={timeEstimate}
           onChange={(e) => setTimeEstimate(e.target.value)}
+          placeholder="minutes"
         />
 
         <label className="newtask-label">Type of Task:</label>
-        <select className="newtask-select"
+        <select
+          className="newtask-select"
           value={taskType}
           onChange={(e) => setTaskType(e.target.value)}
         >
@@ -82,11 +89,21 @@ const NewTask = ({ tasks, setTasks }) => {
           <option value="Leisure">Leisure Activity</option>
         </select>
 
-        <button className="newtask-button" type="button" onClick={() => setTitle(suggestedActivity)}>
+        <button
+          className="newtask-button"
+          type="button"
+          onClick={() => setTitle(suggestedActivity)}
+        >
           Suggest Task
         </button>
-        <button className="newtask-button" type="submit">Create Task</button>
-        <button className="newtask-button" type="button" onClick={handleClearFields}>
+        <button className="newtask-button" type="submit">
+          Create Task
+        </button>
+        <button
+          className="newtask-button"
+          type="button"
+          onClick={handleClearFields}
+        >
           Clear Fields
         </button>
       </form>

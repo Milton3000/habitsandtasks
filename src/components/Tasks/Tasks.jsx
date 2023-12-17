@@ -71,7 +71,7 @@ const Tasks = ({ tasks, setTasks }) => {
         </div>
 
         <div>
-          <h2>Task List</h2>
+          <h2> Task List </h2>
         </div>
         <nav className="text-center mt-4">
         <ul className="nav justify-content-center">
@@ -118,7 +118,7 @@ const Tasks = ({ tasks, setTasks }) => {
 
         <div className="row mt-4">
           <div className="col-md-6">
-            <h3>Ongoing Tasks</h3>
+            <h3> Ongoing Tasks </h3>
             <ul>
               {filteredTasks
                 .filter((task) => !task.completed)

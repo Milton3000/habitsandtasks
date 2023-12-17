@@ -47,10 +47,10 @@ const NewTask = ({ tasks, setTasks }) => {
 
   return (
     <div className="newtask-container">
-      <h2>Create New Task</h2>
+      <h2> Create New Task </h2>
       <form className="newtask-form" onSubmit={handleFormSubmit}>
         <label className="newtask-label">Title:</label>
-        <input className="newtask-input"
+        <input className="newtask-title-input"
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
@@ -63,7 +63,7 @@ const NewTask = ({ tasks, setTasks }) => {
         />
 
         <label className="newtask-label">Estimated Time:</label>
-        <input className="newtask-input"
+        <input className="newtask-time-input"
           type="number"
           value={timeEstimate}
           onChange={(e) => setTimeEstimate(e.target.value)}

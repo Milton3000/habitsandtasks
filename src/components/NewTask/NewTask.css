@@ -15,8 +15,13 @@
   .newtask-label {
     font-weight: bold;
   }
-  
-  .newtask-input,
+  .newtask-title-input {
+    width: 150%;
+  }
+
+  .newtask-time-input {
+    width: 50%;
+  }
   .newtask-textarea,
   .newtask-select {
     width: 150%;

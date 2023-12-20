@@ -97,11 +97,7 @@ const Habits = () => {
       </div>
       <div className='habits-container'>
       {sortedHabits.map((habit, index) => (
-        <div style={
-          {
-            border: '2px solid black', width: '30rem'
-          }
-        } key={index}>
+        <div className='habit-card' key={index}>
           <h2>{habit.habit}</h2>
           <p>
             Streak: {habit.streak}
@@ -113,7 +109,7 @@ const Habits = () => {
             Priority: {habit.priority}
             <button onClick={() => togglePriority(index)}>Switch Priority</button>
           </p>
-          <button onClick={() => removeHabit(index)}>Remove</button>
+          <button className="remove-button" onClick={() => removeHabit(index)}>X</button>
 
         </div>
       ))}

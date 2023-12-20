@@ -10,3 +10,17 @@
     max-width: 62.5rem;
     padding-top: 2rem;
 }
+
+.habit-card {
+    position: relative;
+    flex-grow: 1;
+    height: 11rem;
+    border: 2px solid black;
+    width: 30rem;
+}
+
+.habit-card .remove-button {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+}

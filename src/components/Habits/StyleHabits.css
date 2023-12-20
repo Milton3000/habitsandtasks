@@ -1,0 +1,12 @@
+* {
+    text-align: center;
+}
+
+.habits-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: auto;
+    max-width: 62.5rem;
+    padding-top: 2rem;
+}

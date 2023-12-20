@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import NewHabit from "./NewHabit";
+import './StyleHabits.css';
+
 
 const Habits = () => {
   let [habits, setHabits] = useState([
@@ -65,6 +67,12 @@ const Habits = () => {
     return 0;
   };
 
+  let removeHabit = (index) => {
+    let updatedHabits = [...habits];
+    updatedHabits.splice(index, 1);
+    setHabits(updatedHabits);
+  };
+
   let sortedHabits = habits.filter(filterByPriority).sort(compareStreaks);
 
   return (
@@ -86,7 +94,7 @@ const Habits = () => {
           <option value="desc">Descending</option>
         </select>
       </div>
-
+      <div className='habits-container'>
       {sortedHabits.map((habit, index) => (
         <div style={
           {
@@ -96,16 +104,19 @@ const Habits = () => {
           <h2>{habit.habit}</h2>
           <p>
             Streak: {habit.streak}
-            <button onClick={() => increaseStreak(index)}>+</button>
             <button onClick={() => decreaseStreak(index)}>-</button>
+            <button onClick={() => increaseStreak(index)}>+</button>
             <button onClick={() => resetStreak(index)}>Reset</button>
           </p>
           <p>
             Priority: {habit.priority}
             <button onClick={() => togglePriority(index)}>Switch Priority</button>
           </p>
+          <button onClick={() => removeHabit(index)}>Remove</button>
+
         </div>
       ))}
+      </div>
     </>
   );
 };

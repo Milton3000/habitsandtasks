@@ -5,10 +5,10 @@ import './StyleHabits.css';
 
 const Habits = () => {
   let [habits, setHabits] = useState([
-    { habit: "Programmera", streak: 2, priority: "low" },
-    { habit: "Prokrastinera", streak: 2, priority: "high" },
-    { habit: "Praktisera", streak: 3, priority: "high" },
-    { habit: "Panta mera", streak: 3, priority: "high" },
+    { habit: "Programmera", streak: 2, priority: "Low" },
+    { habit: "Prokrastinera", streak: 2, priority: "High" },
+    { habit: "Praktisera", streak: 3, priority: "High" },
+    { habit: "Panta mera", streak: 3, priority: "High" },
   ]);
 
   const handleAddHabit = (newHabit) => {
@@ -84,8 +84,8 @@ const Habits = () => {
         <label htmlFor="priorityFilter">Filter by Priority:</label>
         <select id="priorityFilter" value={priorityFilter} onChange={handleFilterChange}>
           <option value="all">All</option>
-          <option value="high">High Priority</option>
-          <option value="low">Low Priority</option>
+          <option value="High">High Priority</option>
+          <option value="Low">Low Priority</option>
         </select>
 
         <label htmlFor="sortOrder">Sort by Streaks:</label>

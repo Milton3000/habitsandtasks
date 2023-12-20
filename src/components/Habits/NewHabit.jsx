@@ -6,11 +6,11 @@ const NewHabit = ({ onAddHabit }) => {
   const [priority, setPriority] = useState('High');
 
   const addHabit = (e) => {
-    // e.preventDefault();
-    // if (!habit.trim()) {
-    //   alert('Please enter an activity before adding.');
-    //   return; 
-    // };
+    e.preventDefault();
+    if (!habit.trim()) {
+      alert('Please enter an activity before adding.');
+      return; 
+    };
 
     const newHabit = {
       habit,

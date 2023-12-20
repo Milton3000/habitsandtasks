@@ -62,7 +62,7 @@ const Habits = () => {
     } else if (sortOrder === "desc") {
       return b.streak - a.streak;
     }
-    return 0; 
+    return 0;
   };
 
   let sortedHabits = habits.filter(filterByPriority).sort(compareStreaks);
@@ -86,10 +86,14 @@ const Habits = () => {
           <option value="desc">Descending</option>
         </select>
       </div>
-      
+
       {sortedHabits.map((habit, index) => (
-        <div key={index}>
-          <p>{habit.habit}</p>
+        <div style={
+          {
+            border: '2px solid black', width: '30rem'
+          }
+        } key={index}>
+          <h2>{habit.habit}</h2>
           <p>
             Streak: {habit.streak}
             <button onClick={() => increaseStreak(index)}>+</button>

@@ -22,6 +22,7 @@
     border: 2px solid black;
     width: 30rem;
     max-width: 30rem;
+    margin: auto;
 }
 
 h2 {

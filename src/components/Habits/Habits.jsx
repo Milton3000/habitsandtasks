@@ -81,7 +81,7 @@ const Habits = () => {
     <div className='header-container'>
       <h1>Habits</h1>
       <NewHabit onAddHabit={handleAddHabit} />
-      <div>
+      <div className="header-dropdowns">
         <label htmlFor="priorityFilter">Filter by Priority:</label>
         <select id="priorityFilter" value={priorityFilter} onChange={handleFilterChange}>
           <option value="all">All</option>

@@ -23,4 +23,7 @@
     position: absolute;
     top: 2px;
     right: 2px;
+    background-color: red;
+    color: white;
+    border-radius: 5px;
 }

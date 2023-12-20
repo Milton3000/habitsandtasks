@@ -112,13 +112,13 @@ const Friends = () => {
 
       <ul>
         {filteredFriends.map((friend, index) => (
-          <li key={index}>
+          <div key={index}>
             <FriendInfo
               friend={friend}
               showMoreInfo={selectedFriend === index}
               showHideInfo={() => showHideInfo(index)}
             />
-          </li>
+          </div>
         ))}
       </ul>
     </div>

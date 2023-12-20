@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import NewHabit from "./NewHabit";
 
 const Habits = () => {
   let [habits, setHabits] = useState([
@@ -7,13 +8,12 @@ const Habits = () => {
     { habit: "Baers", streak: 3, priority: "high" },
   ]);
 
+  const handleAddHabit = (newHabit) => {
+    setHabits((prevHabits) => [...prevHabits, newHabit]);
+  };
+
   let [priorityFilter, setPriorityFilter] = useState("all");
   let [sortOrder, setSortOrder] = useState("none");
-
-  let addHabit = () => {
-    let newHabit = { habit: "New Habit", streak: 0, priority: "low" };
-    setHabits([...habits, newHabit]);
-  };
 
   let increaseStreak = (index) => {
     let updatedHabits = [...habits];
@@ -62,7 +62,7 @@ const Habits = () => {
     } else if (sortOrder === "desc") {
       return b.streak - a.streak;
     }
-    return 0; // No sorting
+    return 0; 
   };
 
   let sortedHabits = habits.filter(filterByPriority).sort(compareStreaks);
@@ -70,6 +70,7 @@ const Habits = () => {
   return (
     <>
       <h1>Habits</h1>
+      <NewHabit onAddHabit={handleAddHabit} />
       <div>
         <label htmlFor="priorityFilter">Filter by Priority:</label>
         <select id="priorityFilter" value={priorityFilter} onChange={handleFilterChange}>
@@ -85,7 +86,7 @@ const Habits = () => {
           <option value="desc">Descending</option>
         </select>
       </div>
-      <button onClick={addHabit}>Add New Habit</button>
+      
       {sortedHabits.map((habit, index) => (
         <div key={index}>
           <p>{habit.habit}</p>

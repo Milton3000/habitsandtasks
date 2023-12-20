@@ -3,9 +3,9 @@ import NewHabit from "./NewHabit";
 
 const Habits = () => {
   let [habits, setHabits] = useState([
-    { habit: "Baers", streak: 2, priority: "low" },
-    { habit: "Jaern", streak: 2, priority: "high" },
-    { habit: "Baers", streak: 3, priority: "high" },
+    { habit: "Programmera", streak: 2, priority: "low" },
+    { habit: "Prokrastinera", streak: 2, priority: "high" },
+    { habit: "Panta mera", streak: 3, priority: "high" },
   ]);
 
   const handleAddHabit = (newHabit) => {

@@ -19,6 +19,14 @@
     width: 30rem;
 }
 
+.habit-card-buttons {
+position: relative;
+left: 100px;
+   
+}
+
+
+
 .habit-card .remove-button {
     position: absolute;
     top: 2px;
@@ -27,3 +35,4 @@
     color: white;
     border-radius: 5px;
 }
+

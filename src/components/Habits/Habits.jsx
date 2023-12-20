@@ -101,13 +101,13 @@ const Habits = () => {
           <h2>{habit.habit}</h2>
           <p>
             Streak: {habit.streak}
-            <button onClick={() => decreaseStreak(index)}>-</button>
-            <button onClick={() => increaseStreak(index)}>+</button>
-            <button onClick={() => resetStreak(index)}>Reset</button>
+            <button className='habit-card-buttons' onClick={() => decreaseStreak(index)}>-</button>
+            <button className='habit-card-buttons' onClick={() => increaseStreak(index)}>+</button>
+            <button className='habit-card-buttons' onClick={() => resetStreak(index)}>Reset</button>
           </p>
           <p>
             Priority: {habit.priority}
-            <button onClick={() => togglePriority(index)}>Switch Priority</button>
+            <button className='habit-card-buttons' onClick={() => togglePriority(index)}>Switch Priority</button>
           </p>
           <button className="remove-button" onClick={() => removeHabit(index)}>X</button>
 

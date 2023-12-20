@@ -37,7 +37,7 @@ const Friends = () => {
     minAge: "",
     maxAge: "",
   });
-
+  const [sortBy, setSortBy] = useState(null);
   const fetchRandomUser = async () => {
     const response = await fetch("https://randomuser.me/api");
     const data = await response.json();
@@ -65,15 +65,26 @@ const Friends = () => {
   const showHideInfo = (index) =>
     setSelectedFriend(selectedFriend === index ? null : index);
 
-  const filteredFriends = friends.filter((friend) => {
-    const friendAge =
-      new Date().getFullYear() - new Date(friend.dob).getFullYear();
-    return (
-      (filters.gender === "" || friend.gender === filters.gender) &&
-      (filters.minAge === "" || friendAge >= parseInt(filters.minAge)) &&
-      (filters.maxAge === "" || friendAge <= parseInt(filters.maxAge))
-    );
-  });
+  const doSort = (sortItem) => setSortBy(sortBy === sortItem ? null : sortItem);
+
+  const filteredFriends = friends
+    .filter((friend) => {
+      const friendAge =
+        new Date().getFullYear() - new Date(friend.dob).getFullYear();
+      return (
+        (filters.gender === "" || friend.gender === filters.gender) &&
+        (filters.minAge === "" || friendAge >= parseInt(filters.minAge)) &&
+        (filters.maxAge === "" || friendAge <= parseInt(filters.maxAge))
+      );
+    })
+    .sort((a, b) => {
+      if (sortBy === "firstName") return a.firstName.localeCompare(b.firstName);
+      else if (sortBy === "lastName")
+        return a.lastName.localeCompare(b.lastName);
+      else if (sortBy === "age")
+        return new Date(a.dob).getFullYear() - new Date(b.dob).getFullYear();
+      return 0;
+    });
 
   return (
     <div>
@@ -92,6 +103,12 @@ const Friends = () => {
         <input id="maxAge" type="number" />
         <button onClick={callSetFilters}>Filter</button>
       </div>
+
+      <button onClick={() => doSort("firstName")}>Sortera efter förnamn</button>
+      <button onClick={() => doSort("lastName")}>
+        Sortera efter efternamn
+      </button>
+      <button onClick={() => doSort("age")}>Sortera efter ålder</button>
 
       <ul>
         {filteredFriends.map((friend, index) => (

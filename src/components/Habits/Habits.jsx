@@ -3,9 +3,9 @@ import NewHabit from "./NewHabit";
 
 const Habits = () => {
   let [habits, setHabits] = useState([
-    { habit: "Programmera", streak: 2, priority: "low" },
-    { habit: "Prokrastinera", streak: 2, priority: "high" },
-    { habit: "Panta mera", streak: 3, priority: "high" },
+    // { habit: "Programmera", streak: 2, priority: "low" },
+    // { habit: "Prokrastinera", streak: 2, priority: "high" },
+    // { habit: "Panta mera", streak: 3, priority: "high" },
   ]);
 
   const handleAddHabit = (newHabit) => {
@@ -37,7 +37,7 @@ const Habits = () => {
 
   let togglePriority = (index) => {
     let updatedHabits = [...habits];
-    updatedHabits[index].priority = updatedHabits[index].priority === 'high' ? 'low' : 'high';
+    updatedHabits[index].priority = updatedHabits[index].priority === 'High' ? 'Low' : 'High';
     setHabits(updatedHabits);
   };
 

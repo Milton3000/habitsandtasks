@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 const NewHabit = ({ onAddHabit }) => {
   const [habit, setHabit] = useState('');
   const [streak] = useState(0);
-  const [priority, setPriority] = useState('high');
+  const [priority, setPriority] = useState('High');
 
   const addHabit = () => {
     const newHabit = {
@@ -14,7 +14,7 @@ const NewHabit = ({ onAddHabit }) => {
 
     onAddHabit(newHabit);
     setHabit('');
-    setPriority('high');
+    setPriority('High');
   };
 
   return (
@@ -26,8 +26,8 @@ const NewHabit = ({ onAddHabit }) => {
         onChange={(e) => setHabit(e.target.value)}
       />
       <select value={priority} onChange={(e) => setPriority(e.target.value)}>
-        <option value="high">High Priority</option>
-        <option value="low">Low Priority</option>
+        <option value="High">High Priority</option>
+        <option value="Low">Low Priority</option>
       </select>
       <button onClick={addHabit}>Add New Habit</button>
     </>

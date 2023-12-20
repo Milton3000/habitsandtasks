@@ -1,4 +1,8 @@
-* {
+/* * {
+    text-align: center;
+} */
+
+.header-container {
     text-align: center;
 }
 
@@ -17,15 +21,22 @@
     height: 11rem;
     border: 2px solid black;
     width: 30rem;
+    max-width: 30rem;
 }
 
-.habit-card-buttons {
-position: relative;
-left: 100px;
-   
+h2 {
+    text-align: center;
 }
 
+.habit-content {
+    display: flex;
+    justify-content: space-evenly;
+}
 
+.button-container {
+    display: flex;
+    flex-direction: column;
+}
 
 .habit-card .remove-button {
     position: absolute;
@@ -36,3 +47,12 @@ left: 100px;
     border-radius: 5px;
 }
 
+ul {
+    list-style: none;
+
+}
+
+.habit-list {
+    margin: 0;
+    padding: 0;
+}

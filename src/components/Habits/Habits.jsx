@@ -78,6 +78,7 @@ const Habits = () => {
 
   return (
     <>
+    <div className='header-container'>
       <h1>Habits</h1>
       <NewHabit onAddHabit={handleAddHabit} />
       <div>
@@ -95,24 +96,34 @@ const Habits = () => {
           <option value="desc">Descending</option>
         </select>
       </div>
+      </div>
       <div className='habits-container'>
-      {sortedHabits.map((habit, index) => (
-        <div className='habit-card' key={index}>
-          <h2>{habit.habit}</h2>
-          <p>
-            Streak: {habit.streak}
-            <button className='habit-card-buttons' onClick={() => decreaseStreak(index)}>-</button>
-            <button className='habit-card-buttons' onClick={() => increaseStreak(index)}>+</button>
-            <button className='habit-card-buttons' onClick={() => resetStreak(index)}>Reset</button>
-          </p>
-          <p>
-            Priority: {habit.priority}
-            <button className='habit-card-buttons' onClick={() => togglePriority(index)}>Switch Priority</button>
-          </p>
-          <button className="remove-button" onClick={() => removeHabit(index)}>X</button>
-
-        </div>
-      ))}
+        {sortedHabits.map((habit, index) => (
+          <div className='habit-card' key={index}>
+            <h2>{habit.habit}</h2>
+            <div className='habit-content'>
+            <ul className='habit-list'>
+              <li>
+                Streak: {habit.streak}
+              </li>
+              <li>
+                Priority: {habit.priority}
+              </li>
+            </ul>
+            <div className='button-container'>
+              <div className='streak-buttons'>
+                <button onClick={() => decreaseStreak(index)}>-</button>
+                <button onClick={() => increaseStreak(index)}>+</button>
+                <button onClick={() => resetStreak(index)}>Reset</button>
+              </div>
+              <div>
+                <button className='habit-card-buttons' onClick={() => togglePriority(index)}>Switch Priority</button>
+              </div>
+            </div>
+            </div>
+            <button className="remove-button" onClick={() => removeHabit(index)}>X</button>
+          </div>
+        ))}
       </div>
     </>
   );

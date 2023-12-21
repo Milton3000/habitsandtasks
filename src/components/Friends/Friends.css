@@ -13,6 +13,24 @@ body {
   transition: background-color 0.3s ease;
 }
 
+.customButton {
+  padding: 8px 12px;
+  margin: 5px;
+  background-color: #4285f4;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
+}
+
+.customButton:hover {
+  background-color: #327ae3;
+}
+
 .friend:hover {
   background-color: #f0f0f0;
 }

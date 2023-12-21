@@ -88,7 +88,9 @@ const Friends = () => {
 
   return (
     <div>
-      <button onClick={fetchRandomUser}>Lägg till ny vän</button>
+      <button onClick={fetchRandomUser} className="customButton">
+        Lägg till ny vän
+      </button>
 
       <div>
         <label>kön:</label>
@@ -101,14 +103,20 @@ const Friends = () => {
         <input id="minAge" type="number" />
         <label>Max ålder:</label>
         <input id="maxAge" type="number" />
-        <button onClick={callSetFilters}>Filter</button>
+        <button onClick={callSetFilters} className="customButton">
+          Filter
+        </button>
       </div>
 
-      <button onClick={() => doSort("firstName")}>Sortera efter förnamn</button>
-      <button onClick={() => doSort("lastName")}>
+      <button onClick={() => doSort("firstName")} className="customButton">
+        Sortera efter förnamn
+      </button>
+      <button onClick={() => doSort("lastName")} className="customButton">
         Sortera efter efternamn
       </button>
-      <button onClick={() => doSort("age")}>Sortera efter ålder</button>
+      <button onClick={() => doSort("age")} className="customButton">
+        Sortera efter ålder
+      </button>
 
       <ul>
         {filteredFriends.map((friend, index) => (

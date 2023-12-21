@@ -31,6 +31,29 @@ body {
   background-color: #327ae3;
 }
 
+.input {
+  padding: 6px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.select {
+  padding: 6px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.label {
+  padding: 10px;
+  font-weight: bold;
+  margin-right: 8px;
+  color: #555;
+}
+
 .friend:hover {
   background-color: #f0f0f0;
 }

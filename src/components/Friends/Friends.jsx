@@ -86,6 +86,17 @@ const Friends = () => {
       return 0;
     });
 
+  const resetFilters = () => {
+    setFilters({
+      gender: "",
+      minAge: "",
+      maxAge: "",
+    });
+    document.querySelector("#gender").value = "";
+    document.querySelector("#minAge").value = "";
+    document.querySelector("#maxAge").value = "";
+  };
+
   return (
     <div>
       <button onClick={fetchRandomUser} className="customButton">
@@ -93,18 +104,21 @@ const Friends = () => {
       </button>
 
       <div>
-        <label>kön:</label>
-        <select id="gender">
+        <label className="label">Kön:</label>
+        <select id="gender" className="select">
           <option value="">Alla</option>
           <option value="male">Man</option>
           <option value="female">Kvinna</option>
         </select>
-        <label>Min ålder:</label>
-        <input id="minAge" type="number" />
-        <label>Max ålder:</label>
-        <input id="maxAge" type="number" />
+        <label className="label">Min ålder:</label>
+        <input id="minAge" type="number" className="input" />
+        <label className="label">Max ålder:</label>
+        <input id="maxAge" type="number" className="input" />
         <button onClick={callSetFilters} className="customButton">
           Filter
+        </button>
+        <button onClick={resetFilters} className="customButton">
+          Reset
         </button>
       </div>
 

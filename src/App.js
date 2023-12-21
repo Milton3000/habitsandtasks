@@ -1,4 +1,3 @@
-import React from "react";
 import Friends from "./components/Friends/Friends";
 import Habits from "./components/Habits/Habits"
 import React, { useState } from "react";

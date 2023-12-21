@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 import React, { useEffect, useState } from "react";
 import styles from "../NewTask/NewTask.css";
 
@@ -114,4 +112,3 @@ const NewTask = ({ tasks, setTasks }) => {
 };
 
 export default NewTask;
->>>>>>> a0484a54be9411f025d2c436d1edb07adfd4b4e5

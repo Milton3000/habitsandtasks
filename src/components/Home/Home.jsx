@@ -4,6 +4,7 @@ import { ListGroup } from "react-bootstrap";
 
 const Home = ({ tasks }) => {
   return (
+    <> 
     <div className="justify-content-center">
       <h2 className="mt-4 mb-4"> Home </h2>
       <ListGroup>
@@ -22,6 +23,8 @@ const Home = ({ tasks }) => {
         ))}
       </ListGroup>
     </div>
+    
+    </>
   );
 };
 

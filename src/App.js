@@ -1,5 +1,5 @@
 import Friends from "./components/Friends/Friends";
-import Habits from "./components/Habits/Habits"
+import Habits from "./components/Habits/Habits";
 import React, { useState } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import Home from "./components/Home/Home";
@@ -35,27 +35,35 @@ function App() {
 
   return (
     <>
-      <Habits />
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/tasks">Tasks</Link>
+            </li>
+            <li>
+              <Link to="/habits">Habits</Link>
+            </li>
+          </ul>
+        </nav>
+
+        <Routes>
+          <Route path="/" element={<Home tasks={tasks} />} />
+          <Route
+            path="/tasks/*"
+            element={<Tasks tasks={tasks} setTasks={setTasks} />}
+          />
+          <Route
+            path="/tasks/new"
+            element={<NewTask tasks={tasks} setTasks={setTasks} />}
+          />
+          <Route path="/habits" element={<Habits />} />
+        </Routes>
+      </div>
       <Friends />
-
-    <div>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/tasks">Tasks</Link>
-          </li>
-        </ul>
-      </nav>
-
-      <Routes>
-        <Route path="/" element={<Home tasks={tasks} />} />
-        <Route path="/tasks/*" element={<Tasks tasks={tasks} setTasks={setTasks} />} />
-        <Route path="/tasks/new" element={<NewTask tasks={tasks} setTasks={setTasks} />} />
-      </Routes>
-    </div>
     </>
   );
 }

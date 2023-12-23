@@ -63,24 +63,29 @@ const Tasks = ({ tasks, setTasks }) => {
     ? tasks.filter((task) => task.taskType === filterCategory)
     : tasks;
 
-  return (
-      <div className="container text-center mt-4">
-        {/* OUTLET HÄR, ANVÄNDS I PARENT ROUTE FÖR ATT RENDERA CHILD ROUTE ELEMENTS */}
+    return (
+      <div
+        className="container text-center mt-4 text-light"
+        style={{
+          background: "linear-gradient(to bottom right, #4b6cb7, #182848)",
+          minHeight: "100vh",
+        }}
+      >
         <div>
           <Outlet />
         </div>
-
+  
         <div>
-          <h2> Task List </h2>
+          <h2 className="monospace fw-bold"> Task List </h2>
         </div>
         <nav className="text-center mt-4">
-        <ul className="nav justify-content-center">
-          <li className="nav-item">
-            <Link to="/tasks/new" className="nav-link fs-4">New Task</Link>
-          </li>
-        </ul>
-      </nav>
-      
+          <ul className="nav justify-content-center">
+            <li className="nav-item">
+              <Link to="/tasks/new" className="btn btn-primary"> Add New Task</Link>
+            </li>
+          </ul>
+        </nav>
+        
         <div className="row mt-4">
           <div className="col-md-4">
             <div className="form-floating">
@@ -99,47 +104,48 @@ const Tasks = ({ tasks, setTasks }) => {
               <label htmlFor="floatingSelect">Filter by Category</label>
             </div>
           </div>
-
+  
           <div className="col-md-4">
             <button
-              className="btn btn-sm btn-outline-info m-2"
+              className="btn btn-sm btn-outline-light m-2"
               onClick={handleSortTitle}
             >
               Sort by Title
             </button>
             <button
-              className="btn btn-sm btn-outline-info m-2"
+              className="btn btn-sm btn-outline-light m-2"
               onClick={handleSortTime}
             >
               Sort by Time
             </button>
           </div>
         </div>
-
+  
         <div className="row mt-4">
           <div className="col-md-6">
-            <h3> Ongoing Tasks </h3>
-            <ul>
+            <h3 className="monospace fw-bold"> Ongoing Tasks </h3>
+            <ul className="list-group">
               {filteredTasks
                 .filter((task) => !task.completed)
                 .map((task, index) => (
-                  <li key={index}>
-                    <strong> Title: {task.title}</strong>
+                  <li key={index} className="list-group-item">
+                    <strong>{task.title}</strong>
                     <p> Description: {task.description}</p>
                     <p>Estimated Time: {task.timeEstimate} minutes</p>
                     <p> Type: {task.taskType}</p>
                     <button
                       className={
-                        task.completed ? "text-success" : "text-danger"
+                        task.completed ? "btn btn-success" : "btn btn-secondary mx-2"
                       }
                       onClick={() => handleCompleteTask(index)}
                     >
                       {task.completed ? "Completed" : "Not Completed"}
                     </button>
-                    <button onClick={() => handleDeleteTask(index)}>
+                    <button className="btn btn-danger" onClick={() => handleDeleteTask(index)}>
                       Delete
                     </button>
                     <button
+                      className="btn btn-warning mx-2"
                       onClick={() => {
                         const updatedTask = prompt(
                           "Edit task:",
@@ -156,28 +162,29 @@ const Tasks = ({ tasks, setTasks }) => {
                 ))}
             </ul>
           </div>
-
+  
           <div className="col-md-6">
-            <h3>Completed Tasks</h3>
-            <ul>
+            <h3 className="monospace fw-bold">Completed Tasks</h3>
+            <ul className="list-group">
               {filteredTasks
                 .filter((task) => task.completed)
                 .map((task, index) => (
-                  <li key={index}>
-                    <strong> Title: {task.title}</strong>
+                  <li key={index} className="list-group-item">
+                    <strong> {task.title}</strong>
                     <p> Description: {task.description}</p>
                     <p> Estimated Time: {task.timeEstimate} minutes</p>
                     <p> Type: {task.taskType}</p>
                     <button
-                      className="text-success"
+                      className="btn btn-success"
                       onClick={() => handleUntoggleTask(index)}
                     >
                       Completed
                     </button>
-                    <button onClick={() => handleDeleteTask(index)}>
+                    <button className="btn btn-danger mx-2" onClick={() => handleDeleteTask(index)}>
                       Delete
                     </button>
                     <button
+                      className="btn btn-warning"
                       onClick={() => {
                         const updatedTask = prompt(
                           "Edit task:",
@@ -196,8 +203,7 @@ const Tasks = ({ tasks, setTasks }) => {
           </div>
         </div>
       </div>
-
-  );
-};
-
-export default Tasks;
+    );
+  };
+  
+  export default Tasks;

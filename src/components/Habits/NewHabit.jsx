@@ -32,11 +32,11 @@ const NewHabit = ({ onAddHabit }) => {
   required
 />
 
-      <select value={priority} onChange={(e) => setPriority(e.target.value)}>
+      <select className="mx-2" value={priority} onChange={(e) => setPriority(e.target.value)}>
         <option value="High">High Priority</option>
         <option value="Low">Low Priority</option>
       </select>
-      <button onClick={addHabit}>Add New Habit</button>
+      <button className="mx-2" onClick={addHabit}>Add New Habit</button>
     </>
   );
 };

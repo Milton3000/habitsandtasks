@@ -2,9 +2,11 @@
     text-align: center;
 } */
 
-.header-container {
+/* .header-container {
     text-align: center;
 }
+
+
 
 .habits-container {
     display: flex;
@@ -23,13 +25,10 @@
     width: 30rem;
     max-width: 30rem;
     margin: auto;
-}
+} */
 
-h2 {
-    text-align: center;
-}
 
-.habit-content {
+/* .habit-content {
     display: flex;
     justify-content: space-evenly;
 }
@@ -37,23 +36,27 @@ h2 {
 .button-container {
     display: flex;
     flex-direction: column;
-}
+} */
 
-.habit-card .remove-button {
+/* .habit-card .remove-button {
     position: absolute;
     top: 2px;
     right: 2px;
     background-color: red;
     color: white;
     border-radius: 5px;
-}
+} */
 
 ul {
     list-style: none;
 
 }
 
-.habit-list {
+h2 {
+    text-align: center;
+}
+
+/* .habit-list {
     margin: 0;
     padding: 0;
-}
+} */

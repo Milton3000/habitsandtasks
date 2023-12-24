@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Container, Button } from "react-bootstrap";
 import "./Friends.css";
 
 const FriendInfo = ({ friend, showMoreInfo, showHideInfo }) => (
@@ -38,6 +39,7 @@ const Friends = () => {
     maxAge: "",
   });
   const [sortBy, setSortBy] = useState(null);
+
   const fetchRandomUser = async () => {
     const response = await fetch("https://randomuser.me/api");
     const data = await response.json();
@@ -98,10 +100,10 @@ const Friends = () => {
   };
 
   return (
-    <div>
-      <button onClick={fetchRandomUser} className="customButton">
+    <Container className="text-center">
+      <Button onClick={fetchRandomUser} className="customButton">
         Lägg till ny vän
-      </button>
+      </Button>
 
       <div>
         <label className="label">Kön:</label>
@@ -143,7 +145,7 @@ const Friends = () => {
           </div>
         ))}
       </ul>
-    </div>
+    </Container>
   );
 };
 

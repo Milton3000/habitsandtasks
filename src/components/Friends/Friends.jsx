@@ -124,7 +124,11 @@ const Friends = () => {
   };
 
   return (
+<<<<<<< HEAD
     <div>
+=======
+    <div className="text-center">
+>>>>>>> b4ef9ba61aadc7f655c530b3a2b9d560c9192cdc
       <button onClick={fetchRandomUser} className="customButton">
         Lägg till ny vän
       </button>

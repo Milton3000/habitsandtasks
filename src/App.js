@@ -37,43 +37,45 @@ function App() {
     <>
         <div>
         <nav
-          className="navbar navbar-expand-lg navbar-light bg-light"
-          style={{ marginLeft: "auto", marginRight: "auto", display: "table" }}
-        >
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav">
-              <li className="nav-item">
-                <Link to="/" className="nav-link">
-                  Home
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/tasks" className="nav-link">
-                  Tasks
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/habits" className="nav-link">
-                  Habits
-                </Link>
-                <Link to="/Friends" className="nav-link">
-                  Friends
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </nav>
+  className="navbar navbar-expand-lg navbar-light bg-light"
+  style={{ marginLeft: "auto", marginRight: "auto", display: "table" }}
+>
+  <button
+    className="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNav"
+    aria-controls="navbarNav"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span className="navbar-toggler-icon"></span>
+  </button>
+  <div className="collapse navbar-collapse" id="navbarNav">
+    <ul className="navbar-nav">
+      <li className="nav-item">
+        <Link to="/" className="nav-link">
+          Home
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link to="/tasks" className="nav-link">
+          Tasks
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link to="/habits" className="nav-link">
+          Habits
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link to="/friends" className="nav-link">
+          Friends
+        </Link>
+      </li>
+    </ul>
+  </div>
+</nav>
       <div
         style={{
           backgroundImage:

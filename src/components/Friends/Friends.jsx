@@ -124,10 +124,10 @@ const Friends = () => {
   };
 
   return (
-    <div>
-      <button onClick={fetchRandomUser} className="customButton">
+    <Container className="text-center">
+      <Button onClick={fetchRandomUser} className="customButton">
         Lägg till ny vän
-      </button>
+      </Button>
 
       <div>
         <label className="label">Kön:</label>
@@ -169,7 +169,7 @@ const Friends = () => {
           </div>
         ))}
       </ul>
-    </div>
+    </Container>
   );
 };
 

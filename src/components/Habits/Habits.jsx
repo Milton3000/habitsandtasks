@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import NewHabit from "./NewHabit";
-import './StyleHabits.css';
-
+import "./StyleHabits.css";
 
 const Habits = () => {
   let [habits, setHabits] = useState([
@@ -40,7 +39,8 @@ const Habits = () => {
 
   let togglePriority = (index) => {
     let updatedHabits = [...habits];
-    updatedHabits[index].priority = updatedHabits[index].priority === 'High' ? 'Low' : 'High';
+    updatedHabits[index].priority =
+      updatedHabits[index].priority === "High" ? "Low" : "High";
     setHabits(updatedHabits);
   };
 
@@ -78,52 +78,91 @@ const Habits = () => {
 
   return (
     <>
-    <div className='header-container'>
-      <h1>Habits</h1>
-      <NewHabit onAddHabit={handleAddHabit} />
-      <div className="header-dropdowns">
-        <label htmlFor="priorityFilter">Filter by Priority:</label>
-        <select id="priorityFilter" value={priorityFilter} onChange={handleFilterChange}>
-          <option value="all">All</option>
-          <option value="High">High Priority</option>
-          <option value="Low">Low Priority</option>
-        </select>
-
-        <label htmlFor="sortOrder">Sort by Streaks:</label>
-        <select id="sortOrder" value={sortOrder} onChange={handleSortChange}>
-          <option value="none">None</option>
-          <option value="asc">Ascending</option>
-          <option value="desc">Descending</option>
-        </select>
-      </div>
-      </div>
-      <div className='habits-container'>
-        {sortedHabits.map((habit, index) => (
-          <div className='habit-card' key={index}>
-            <h2>{habit.habit}</h2>
-            <div className='habit-content'>
-            <ul className='habit-list'>
-              <li>
-                Streak: {habit.streak}
-              </li>
-              <li>
-                Priority: {habit.priority}
-              </li>
-            </ul>
-            <div className='button-container'>
-              <div className='streak-buttons'>
-                <button onClick={() => decreaseStreak(index)}>-</button>
-                <button onClick={() => increaseStreak(index)}>+</button>
-                <button onClick={() => resetStreak(index)}>Reset</button>
-              </div>
-              <div>
-                <button className='habit-card-buttons' onClick={() => togglePriority(index)}>Switch Priority</button>
-              </div>
+      <div
+        className="container text-center mt-4 text-light"
+        style={{
+          background: "linear-gradient(to bottom right, #4b6cb7, #182848)",
+          minHeight: "100vh",
+        }}
+      >
+        <div className="container mt-4">
+          <h1 className="monospace fw-bold text-center">Habits</h1>
+          <NewHabit onAddHabit={handleAddHabit} />
+          <div className="d-flex justify-content-center mt-3">
+            <div className="m-2">
+              <label htmlFor="priorityFilter" className="form-label">
+                Filter by Priority:
+              </label>
+              <select
+                id="priorityFilter"
+                value={priorityFilter}
+                onChange={handleFilterChange}
+                className="form-select"
+              >
+                <option value="all">All</option>
+                <option value="High">High Priority</option>
+                <option value="Low">Low Priority</option>
+              </select>
             </div>
+            <div className="m-2">
+              <label htmlFor="sortOrder" className="form-label">
+                Sort by Streaks:
+              </label>
+              <select
+                id="sortOrder"
+                value={sortOrder}
+                onChange={handleSortChange}
+                className="form-select"
+              >
+                <option value="none">None</option>
+                <option value="asc">Ascending</option>
+                <option value="desc">Descending</option>
+              </select>
             </div>
-            <button className="remove-button" onClick={() => removeHabit(index)}>X</button>
           </div>
-        ))}
+        </div>
+
+        <div className="container d-flex flex-wrap justify-content-center mt-3">
+          {sortedHabits.map((habit, index) => (
+            <div className="card m-2" key={index} style={{ width: "18rem" }}>
+              <div className="card-body">
+                <h2 className="card-title">{habit.habit}</h2>
+                <ul className="list-unstyled">
+                  <li>Streak: {habit.streak}</li>
+                  <li>Priority: {habit.priority}</li>
+                </ul>
+                <div className="d-flex justify-content-between">
+                  <div className="btn-group">
+                    <button
+                      className="btn btn-outline-secondary"
+                      onClick={() => decreaseStreak(index)}
+                    >
+                      -
+                    </button>
+                    <button
+                      className="btn btn-outline-success"
+                      onClick={() => increaseStreak(index)}
+                    >
+                      +
+                    </button>
+                    <button
+                      className="btn btn-outline-dark"
+                      onClick={() => resetStreak(index)}
+                    >
+                      Reset
+                    </button>
+                  </div>
+                  <button
+                    className="btn btn-outline-danger"
+                    onClick={() => removeHabit(index)}
+                  >
+                    Remove
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </>
   );

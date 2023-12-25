@@ -4,7 +4,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { ListGroup } from "react-bootstrap";
 import Friends from "../Friends/Friends";
 
-
 const Home = ({ tasks }) => {
   return (
     <div
@@ -14,7 +13,9 @@ const Home = ({ tasks }) => {
         minHeight: "100vh",
       }}
     >
-      <h2 className="mt-4 mb-4 text-center monospace fw-bold">Habits & Tasks</h2>
+      <h2 className="mt-4 mb-4 text-center monospace fw-bold">
+        Habits & Tasks
+      </h2>
       <ListGroup>
         {tasks.map((task, index) => (
           <ListGroup.Item
@@ -35,7 +36,7 @@ const Home = ({ tasks }) => {
         ))}
       </ListGroup>
       <h2> Newly Added Friends </h2>
-      <Friends showButtons={false} />
+      <Friends showButtons={false} maxFriends={5} />
     </div>
   );
 };

@@ -28,7 +28,7 @@ const FriendInfo = ({ friend, showMoreInfo, showHideInfo }) => (
   </div>
 );
 
-const Friends = ({ showButtons = true }) => {
+const Friends = ({ showButtons = true, maxFriends }) => {
   const [friends, setFriends] = useState([]);
   const [selectedFriend, setSelectedFriend] = useState(null);
   const [filters, setFilters] = useState({
@@ -39,26 +39,13 @@ const Friends = ({ showButtons = true }) => {
   const [sortBy, setSortBy] = useState(null);
 
   useEffect(() => {
-    const fetchInitialFriends = async () => {
-      try {
-        const response = await fetch("https://randomuser.me/api/?results=5");
-        const data = await response.json();
-        const initialFriends = data.results.map((randomUser) => ({
-          firstName: randomUser.name.first,
-          lastName: randomUser.name.last,
-          email: randomUser.email,
-          dob: randomUser.dob.date,
-          gender: randomUser.gender,
-          picture: randomUser.picture.large,
-        }));
-        setFriends(initialFriends);
-      } catch (error) {
-        console.error("Error fetching initial friends:", error);
-      }
-    };
-
-    fetchInitialFriends();
-  }, []);
+    const savedFriends = localStorage.getItem("friends");
+    const parsedFriends = savedFriends ? JSON.parse(savedFriends) : [];
+    const limitedFriends = parsedFriends.slice(
+      Math.max(parsedFriends.length - maxFriends, 0)
+    );
+    setFriends(limitedFriends);
+  }, [maxFriends]);
 
   const fetchRandomUser = async () => {
     try {
@@ -73,7 +60,11 @@ const Friends = ({ showButtons = true }) => {
         gender: randomUser.gender,
         picture: randomUser.picture.large,
       };
-      setFriends([...friends, newFriend]);
+
+      const updatedFriends = [...friends, newFriend];
+      setFriends(updatedFriends);
+
+      localStorage.setItem("friends", JSON.stringify(updatedFriends));
     } catch (error) {
       console.error("Error fetching random user:", error);
     }
@@ -167,7 +158,7 @@ const Friends = ({ showButtons = true }) => {
       )}
 
       <ul>
-        {filteredFriends.map((friend, index) => (
+        {filteredFriends.reverse().map((friend, index) => (
           <div key={index}>
             <FriendInfo
               friend={friend}

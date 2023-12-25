@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Friends.css";
 
 const FriendInfo = ({ friend, showMoreInfo, showHideInfo }) => (
@@ -31,26 +31,52 @@ const FriendInfo = ({ friend, showMoreInfo, showHideInfo }) => (
 const Friends = () => {
   const [friends, setFriends] = useState([]);
   const [selectedFriend, setSelectedFriend] = useState(null);
-
   const [filters, setFilters] = useState({
     gender: "",
     minAge: "",
     maxAge: "",
   });
   const [sortBy, setSortBy] = useState(null);
-  const fetchRandomUser = async () => {
-    const response = await fetch("https://randomuser.me/api");
-    const data = await response.json();
-    const randomUser = data.results[0];
-    const newFriend = {
-      firstName: randomUser.name.first,
-      lastName: randomUser.name.last,
-      email: randomUser.email,
-      dob: randomUser.dob.date,
-      gender: randomUser.gender,
-      picture: randomUser.picture.large,
+
+  useEffect(() => {
+    const fetchInitialFriends = async () => {
+      try {
+        const response = await fetch("https://randomuser.me/api/?results=5");
+        const data = await response.json();
+        const initialFriends = data.results.map((randomUser) => ({
+          firstName: randomUser.name.first,
+          lastName: randomUser.name.last,
+          email: randomUser.email,
+          dob: randomUser.dob.date,
+          gender: randomUser.gender,
+          picture: randomUser.picture.large,
+        }));
+        setFriends(initialFriends);
+      } catch (error) {
+        console.error("Error fetching initial friends:", error);
+      }
     };
-    setFriends([...friends, newFriend]);
+
+    fetchInitialFriends();
+  }, []);
+
+  const fetchRandomUser = async () => {
+    try {
+      const response = await fetch("https://randomuser.me/api");
+      const data = await response.json();
+      const randomUser = data.results[0];
+      const newFriend = {
+        firstName: randomUser.name.first,
+        lastName: randomUser.name.last,
+        email: randomUser.email,
+        dob: randomUser.dob.date,
+        gender: randomUser.gender,
+        picture: randomUser.picture.large,
+      };
+      setFriends([...friends, newFriend]);
+    } catch (error) {
+      console.error("Error fetching random user:", error);
+    }
   };
 
   const callSetFilters = () => {

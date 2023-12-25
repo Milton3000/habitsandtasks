@@ -34,7 +34,7 @@ const Home = ({ tasks }) => {
           </ListGroup.Item>
         ))}
       </ListGroup>
-      <h2> Newly Added Friends </h2>
+      <h2> Newly Added Friends ❤️ </h2>
       <Friends showButtons={false} />
     </div>
   );

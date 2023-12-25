@@ -180,7 +180,7 @@ const Tasks = ({ tasks, setTasks }) => {
                     }
                     onClick={() => handleCompleteTask(index)}
                   >
-                    {task.completed ? "Completed" : "Not Completed"}
+                    {task.completed ? "Completed" : "Click to Complete"}
                   </button>
                   <button
                     className="btn btn-danger"

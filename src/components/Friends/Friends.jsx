@@ -124,6 +124,7 @@ const Friends = ({ showButtons = true }) => {
   };
 
   return (
+    <div className="flex-container">
     <div>
       {showButtons && (
         <button onClick={fetchRandomUser} className="customButton">
@@ -177,6 +178,7 @@ const Friends = ({ showButtons = true }) => {
           </div>
         ))}
       </ul>
+    </div>
     </div>
   );
 };

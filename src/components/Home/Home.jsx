@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ListGroup } from "react-bootstrap";
+import Friends from "../Friends/Friends";
 
 const Home = ({ tasks }) => {
   return (
@@ -33,6 +34,7 @@ const Home = ({ tasks }) => {
         ))}
       </ListGroup>
       <h2> Newly Added Friends </h2>
+      <Friends />
     </div>
   );
 };

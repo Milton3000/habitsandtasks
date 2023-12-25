@@ -8,14 +8,15 @@ const NewTask = ({ tasks, setTasks }) => {
   const [taskType, setTaskType] = useState("");
   const [suggestedActivity, setSuggestedActivity] = useState("");
 
+  const fetchActivity = async () => {
+    const response = await fetch("https://www.boredapi.com/api/activity");
+    const data = await response.json();
+    setSuggestedActivity(data.activity);
+  };
+
   useEffect(() => {
-    const fetchActivity = async () => {
-      const response = await fetch("https://www.boredapi.com/api/activity");
-      const data = await response.json();
-      setSuggestedActivity(data.activity);
-    };
     fetchActivity();
-  }, []);
+  }, []); 
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -45,9 +46,15 @@ const NewTask = ({ tasks, setTasks }) => {
     setSuggestedActivity("");
   };
 
+  const handleSuggestTask = () => {
+    fetchActivity();
+    setTitle(suggestedActivity);
+  };
+
   return (
     <div className="newtask-container">
-      <h2> Create New Task </h2>
+      <br/>
+      <h2 className="monospace fw-bold"> Create New Task </h2>
       <form className="newtask-form" onSubmit={handleFormSubmit}>
         <label className="newtask-label">Title:</label>
         <input
@@ -92,7 +99,7 @@ const NewTask = ({ tasks, setTasks }) => {
         <button
           className="newtask-button"
           type="button"
-          onClick={() => setTitle(suggestedActivity)}
+          onClick={handleSuggestTask}
         >
           Suggest Task
         </button>

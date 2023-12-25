@@ -33,6 +33,7 @@ const Home = ({ tasks }) => {
         ))}
       </ListGroup>
       <h2> Newly Added Friends </h2>
+
     </div>
   );
 };

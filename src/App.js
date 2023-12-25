@@ -67,6 +67,9 @@ function App() {
                 <Link to="/habits" className="nav-link">
                   Habits
                 </Link>
+                <Link to="/Friends" className="nav-link">
+                  Friends
+                </Link>
               </li>
             </ul>
           </div>
@@ -99,10 +102,14 @@ function App() {
             element={<NewTask tasks={tasks} setTasks={setTasks} />}
           />
           <Route path="/habits" element={<Habits />} />
+          <Route
+            path="/Friends"
+            element={<Friends />}
+          />
+          <Route path="/habits" element={<Habits />} />
         </Routes>
       </div>
       <br />
-      <Friends />
     </>
   );
 }

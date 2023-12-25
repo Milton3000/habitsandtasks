@@ -32,6 +32,7 @@ const Home = ({ tasks }) => {
           </ListGroup.Item>
         ))}
       </ListGroup>
+      <h2> Newly Added Friends </h2>
     </div>
   );
 };

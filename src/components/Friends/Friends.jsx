@@ -28,7 +28,7 @@ const FriendInfo = ({ friend, showMoreInfo, showHideInfo }) => (
   </div>
 );
 
-const Friends = () => {
+const Friends = ({ showButtons = true }) => {
   const [friends, setFriends] = useState([]);
   const [selectedFriend, setSelectedFriend] = useState(null);
   const [filters, setFilters] = useState({
@@ -125,38 +125,46 @@ const Friends = () => {
 
   return (
     <div>
-      <button onClick={fetchRandomUser} className="customButton">
-        Lägg till ny vän
-      </button>
-
-      <div>
-        <label className="label">Kön:</label>
-        <select id="gender" className="select">
-          <option value="">Alla</option>
-          <option value="male">Man</option>
-          <option value="female">Kvinna</option>
-        </select>
-        <label className="label">Min ålder:</label>
-        <input id="minAge" type="number" className="input" />
-        <label className="label">Max ålder:</label>
-        <input id="maxAge" type="number" className="input" />
-        <button onClick={callSetFilters} className="customButton">
-          Filter
+      {showButtons && (
+        <button onClick={fetchRandomUser} className="customButton">
+          Lägg till ny vän
         </button>
-        <button onClick={resetFilters} className="customButton">
-          Reset
-        </button>
-      </div>
+      )}
 
-      <button onClick={() => doSort("firstName")} className="customButton">
-        Sortera efter förnamn
-      </button>
-      <button onClick={() => doSort("lastName")} className="customButton">
-        Sortera efter efternamn
-      </button>
-      <button onClick={() => doSort("age")} className="customButton">
-        Sortera efter ålder
-      </button>
+      {showButtons && (
+        <div>
+          <label className="label">Kön:</label>
+          <select id="gender" className="select">
+            <option value="">Alla</option>
+            <option value="male">Man</option>
+            <option value="female">Kvinna</option>
+          </select>
+          <label className="label">Min ålder:</label>
+          <input id="minAge" type="number" className="input" />
+          <label className="label">Max ålder:</label>
+          <input id="maxAge" type="number" className="input" />
+          <button onClick={callSetFilters} className="customButton">
+            Filter
+          </button>
+          <button onClick={resetFilters} className="customButton">
+            Reset
+          </button>
+        </div>
+      )}
+
+      {showButtons && (
+        <div>
+          <button onClick={() => doSort("firstName")} className="customButton">
+            Sortera efter förnamn
+          </button>
+          <button onClick={() => doSort("lastName")} className="customButton">
+            Sortera efter efternamn
+          </button>
+          <button onClick={() => doSort("age")} className="customButton">
+            Sortera efter ålder
+          </button>
+        </div>
+      )}
 
       <ul>
         {filteredFriends.map((friend, index) => (

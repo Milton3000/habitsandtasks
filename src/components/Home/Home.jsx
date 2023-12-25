@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { ListGroup } from "react-bootstrap";
 import Friends from "../Friends/Friends";
 
+
 const Home = ({ tasks }) => {
   return (
     <div
@@ -34,7 +35,7 @@ const Home = ({ tasks }) => {
         ))}
       </ListGroup>
       <h2> Newly Added Friends </h2>
-      <Friends />
+      <Friends showButtons={false} />
     </div>
   );
 };

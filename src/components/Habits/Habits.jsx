@@ -31,12 +31,12 @@ const Habits = ({ habits, setHabits }) => {
     setHabits(updatedHabits);
   };
 
-  // let togglePriority = (index) => {
-  //   let updatedHabits = [...habits];
-  //   updatedHabits[index].priority =
-  //     updatedHabits[index].priority === "High" ? "Low" : "High";
-  //   setHabits(updatedHabits);
-  // };
+  let togglePriority = (index) => {
+    let updatedHabits = [...habits];
+    updatedHabits[index].priority =
+      updatedHabits[index].priority === "High" ? "Low" : "High";
+    setHabits(updatedHabits);
+  };
 
   let handleFilterChange = (event) => {
     setPriorityFilter(event.target.value);
@@ -128,29 +128,35 @@ const Habits = ({ habits, setHabits }) => {
                 <div className="d-flex justify-content-between">
                   <div className="btn-group">
                     <button
-                      className="btn btn-outline-secondary"
+                      className="btn btn-secondary"
                       onClick={() => decreaseStreak(index)}
                     >
                       -
                     </button>
                     <button
-                      className="btn btn-outline-success"
+                      className="btn btn-secondary"
                       onClick={() => increaseStreak(index)}
                     >
                       +
                     </button>
                     <button
-                      className="btn btn-outline-dark"
+                      className="btn btn-danger mx-2"
                       onClick={() => resetStreak(index)}
                     >
                       Reset
                     </button>
                   </div>
                   <button
-                    className="btn btn-outline-danger"
+                    className="btn btn-warning"
+                    onClick={() => togglePriority(index)}
+                  >
+                    Priority
+                  </button>
+                  <button
+                    className="remove-button"
                     onClick={() => removeHabit(index)}
                   >
-                    Remove
+                    X
                   </button>
                 </div>
               </div>

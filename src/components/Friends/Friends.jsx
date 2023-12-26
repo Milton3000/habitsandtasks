@@ -115,7 +115,6 @@ const Friends = ({ showButtons = true, maxFriends }) => {
   };
 
   return (
-    <div className="flex-container">
     <div>
       {showButtons && (
         <button onClick={fetchRandomUser} className="customButton">
@@ -169,7 +168,6 @@ const Friends = ({ showButtons = true, maxFriends }) => {
           </div>
         ))}
       </ul>
-    </div>
     </div>
   );
 };

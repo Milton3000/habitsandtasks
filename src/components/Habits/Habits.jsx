@@ -2,13 +2,7 @@ import React, { useState } from "react";
 import NewHabit from "./NewHabit";
 import "./StyleHabits.css";
 
-const Habits = () => {
-  let [habits, setHabits] = useState([
-    { habit: "Programmera", streak: 2, priority: "Low" },
-    { habit: "Prokrastinera", streak: 2, priority: "High" },
-    { habit: "Praktisera", streak: 3, priority: "High" },
-    { habit: "Panta mera", streak: 3, priority: "High" },
-  ]);
+const Habits = ({ habits, setHabits }) => {
 
   const handleAddHabit = (newHabit) => {
     setHabits((prevHabits) => [...prevHabits, newHabit]);
@@ -37,12 +31,12 @@ const Habits = () => {
     setHabits(updatedHabits);
   };
 
-  let togglePriority = (index) => {
-    let updatedHabits = [...habits];
-    updatedHabits[index].priority =
-      updatedHabits[index].priority === "High" ? "Low" : "High";
-    setHabits(updatedHabits);
-  };
+  // let togglePriority = (index) => {
+  //   let updatedHabits = [...habits];
+  //   updatedHabits[index].priority =
+  //     updatedHabits[index].priority === "High" ? "Low" : "High";
+  //   setHabits(updatedHabits);
+  // };
 
   let handleFilterChange = (event) => {
     setPriorityFilter(event.target.value);
@@ -56,7 +50,7 @@ const Habits = () => {
     if (priorityFilter === "all") {
       return true;
     }
-    return habit.priority === priorityFilter;
+    return habit.priority.toLowerCase() === priorityFilter.toLowerCase();
   };
 
   let compareStreaks = (a, b) => {

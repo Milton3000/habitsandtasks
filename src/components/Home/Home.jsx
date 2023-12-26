@@ -49,7 +49,7 @@ const Home = ({ tasks, habits }) => {
         ))}
       </ListGroup>
       <h2> Newly Added Friends ❤️ </h2>
-      <Friends showButtons={false} />
+      <Friends showButtons={false} maxFriends={5} />
     </div>
   );
 };

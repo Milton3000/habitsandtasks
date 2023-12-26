@@ -18,6 +18,7 @@ function App() {
 
   const initialTasks = [
     {
+      id: 0,
       title: "Coding",
       description: "Reviewing Hooks & Props",
       timeEstimate: 60,
@@ -25,6 +26,7 @@ function App() {
       completed: false,
     },
     {
+      id: 1,
       title: "MealPrep",
       description: "Prepare meals for the upcoming week",
       timeEstimate: 90,
@@ -32,6 +34,7 @@ function App() {
       completed: false,
     },
     {
+      id: 2,
       title: "Group Meeting",
       description: "Project meeting to coordinate and update about the process",
       timeEstimate: 10,

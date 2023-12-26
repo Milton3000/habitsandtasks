@@ -2,12 +2,6 @@ body {
   margin-top: 10px;
   margin-left: 10px;
 }
-
-.flex-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 .friend {
   display: flex;
   align-items: center;

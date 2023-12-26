@@ -2,13 +2,7 @@ import React, { useState } from "react";
 import NewHabit from "./NewHabit";
 import "./StyleHabits.css";
 
-const Habits = () => {
-  let [habits, setHabits] = useState([
-    { habit: "Programmera", streak: 2, priority: "Low" },
-    { habit: "Prokrastinera", streak: 2, priority: "High" },
-    { habit: "Praktisera", streak: 3, priority: "High" },
-    { habit: "Panta mera", streak: 3, priority: "High" },
-  ]);
+const Habits = ({ habits, setHabits }) => {
 
   const handleAddHabit = (newHabit) => {
     setHabits((prevHabits) => [...prevHabits, newHabit]);
@@ -56,7 +50,7 @@ const Habits = () => {
     if (priorityFilter === "all") {
       return true;
     }
-    return habit.priority === priorityFilter;
+    return habit.priority.toLowerCase() === priorityFilter.toLowerCase();
   };
 
   let compareStreaks = (a, b) => {
@@ -134,29 +128,35 @@ const Habits = () => {
                 <div className="d-flex justify-content-between">
                   <div className="btn-group">
                     <button
-                      className="btn btn-outline-secondary"
+                      className="btn btn-secondary"
                       onClick={() => decreaseStreak(index)}
                     >
                       -
                     </button>
                     <button
-                      className="btn btn-outline-success"
+                      className="btn btn-secondary"
                       onClick={() => increaseStreak(index)}
                     >
                       +
                     </button>
                     <button
-                      className="btn btn-outline-dark"
+                      className="btn btn-danger mx-2"
                       onClick={() => resetStreak(index)}
                     >
                       Reset
                     </button>
                   </div>
                   <button
-                    className="btn btn-outline-danger"
+                    className="btn btn-warning"
+                    onClick={() => togglePriority(index)}
+                  >
+                    Priority
+                  </button>
+                  <button
+                    className="remove-button"
                     onClick={() => removeHabit(index)}
                   >
-                    Remove
+                    X
                   </button>
                 </div>
               </div>

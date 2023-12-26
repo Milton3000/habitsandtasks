@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ListGroup } from "react-bootstrap";
 import Friends from "../Friends/Friends";
@@ -16,6 +15,22 @@ const Home = ({ tasks }) => {
       <h2 className="mt-4 mb-4 text-center monospace fw-bold">
         Habits & Tasks
       </h2>
+      <h2 className="mt-4 mb-4 text-center monospace fw-bold">
+        Habits & Tasks
+      </h2>
+      <div className="card-deck mt-3 row">
+        {habitsPreview.map((habit, index) => (
+          <div className="col-md-4" key={index}>
+            <div className="card mb-4">
+              <div className="card-body">
+                <h5 className="card-title">{habit.habit}</h5>
+                <p className="card-text">Streak: {habit.streak}</p>
+                <p className="card-text">Priority: {habit.priority}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
       <ListGroup>
         {tasks.map((task, index) => (
           <ListGroup.Item

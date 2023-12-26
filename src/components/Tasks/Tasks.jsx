@@ -6,46 +6,37 @@ const Tasks = ({ tasks, setTasks }) => {
   const [filterCategory, setFilterCategory] = useState("");
   const [sortTitleOrder, setSortTitleOrder] = useState("asc");
   const [sortTimeOrder, setSortTimeOrder] = useState("asc");
-  const [editedTaskIndex, setEditedTaskIndex] = useState(null);
-  const [editedTask, setEditedTask] = useState({
-    title: "",
-    description: "",
-    timeEstimate: 0,
-  });
+  const [editedTask, setEditedTask] = useState(null);
   const [showEditModal, setShowEditModal] = useState(false);
 
-  const handleCompleteTask = (index) => {
-    setTasks((prevTasks) => {
-      const updatedTasks = [...prevTasks];
-      updatedTasks[index].completed = true;
-      return updatedTasks;
-    });
+  const handleCompleteTask = (id) => {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        task.id === id ? { ...task, completed: true } : task
+      )
+    );
   };
-  
-  const handleUntoggleTask = (index) => {
-    setTasks((prevTasks) => {
-      const updatedTasks = [...prevTasks];
-      updatedTasks[index].completed = false;
-      return updatedTasks;
-    });
-  };
-  
-  
-  
 
-  const handleDeleteTask = (index) => {
+  const handleUntoggleTask = (id) => {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        task.id === id ? { ...task, completed: false } : task
+      )
+    );
+  };
+
+  const handleDeleteTask = (id) => {
     const confirmation = window.confirm(
       "Are you sure you want to delete this task?"
     );
     if (confirmation) {
-      const updatedTasks = tasks.filter((_, i) => i !== index);
+      const updatedTasks = tasks.filter((task) => task.id !== id);
       setTasks(updatedTasks);
     }
   };
 
-  const handleEditTask = (index, updatedTask) => {
-    setEditedTaskIndex(index);
-    setEditedTask(updatedTask);
+  const handleEditTask = (task) => {
+    setEditedTask(task);
     setShowEditModal(true);
   };
 
@@ -78,10 +69,12 @@ const Tasks = ({ tasks, setTasks }) => {
   };
 
   const handleSaveEditedTask = () => {
-    if (editedTaskIndex !== null) {
-      const updatedTasks = [...tasks];
-      updatedTasks[editedTaskIndex] = { ...editedTask };
-      setTasks(updatedTasks);
+    if (editedTask) {
+      setTasks((prevTasks) =>
+        prevTasks.map((task) =>
+          task.id === editedTask.id ? { ...editedTask } : task
+        )
+      );
       handleCloseEditModal();
     }
   };
@@ -92,12 +85,7 @@ const Tasks = ({ tasks, setTasks }) => {
 
   const handleCloseEditModal = () => {
     setShowEditModal(false);
-    setEditedTaskIndex(null);
-    setEditedTask({
-      title: "",
-      description: "",
-      timeEstimate: 0,
-    });
+    setEditedTask(null);
   };
 
   return (
@@ -166,8 +154,8 @@ const Tasks = ({ tasks, setTasks }) => {
           <ul className="list-group">
             {filteredTasks
               .filter((task) => !task.completed)
-              .map((task, index) => (
-                <li key={index} className="list-group-item">
+              .map((task) => (
+                <li key={task.id} className="list-group-item">
                   <strong>{task.title}</strong>
                   <p> Description: {task.description}</p>
                   <p>Estimated Time: {task.timeEstimate} minutes</p>
@@ -178,19 +166,19 @@ const Tasks = ({ tasks, setTasks }) => {
                         ? "btn btn-success"
                         : "btn btn-secondary mx-2"
                     }
-                    onClick={() => handleCompleteTask(index)}
+                    onClick={() => handleCompleteTask(task.id)}
                   >
-                    {task.completed ? "Completed" : "Not Completed"}
+                    {task.completed ? "Completed" : "Click to Complete"}
                   </button>
                   <button
                     className="btn btn-danger"
-                    onClick={() => handleDeleteTask(index)}
+                    onClick={() => handleDeleteTask(task.id)}
                   >
                     Delete
                   </button>
                   <button
                     className="btn btn-warning mx-2"
-                    onClick={() => handleEditTask(index, task)}
+                    onClick={() => handleEditTask(task)}
                   >
                     Edit
                   </button>
@@ -204,27 +192,27 @@ const Tasks = ({ tasks, setTasks }) => {
           <ul className="list-group">
             {filteredTasks
               .filter((task) => task.completed)
-              .map((task, index) => (
-                <li key={index} className="list-group-item">
+              .map((task) => (
+                <li key={task.id} className="list-group-item">
                   <strong> {task.title}</strong>
                   <p> Description: {task.description}</p>
                   <p> Estimated Time: {task.timeEstimate} minutes</p>
                   <p> Type: {task.taskType}</p>
                   <button
                     className="btn btn-success"
-                    onClick={() => handleUntoggleTask(index)}
+                    onClick={() => handleUntoggleTask(task.id)}
                   >
                     Completed
                   </button>
                   <button
                     className="btn btn-danger mx-2"
-                    onClick={() => handleDeleteTask(index)}
+                    onClick={() => handleDeleteTask(task.id)}
                   >
                     Delete
                   </button>
                   <button
                     className="btn btn-warning"
-                    onClick={() => handleEditTask(index, task)}
+                    onClick={() => handleEditTask(task)}
                   >
                     Edit
                   </button>
@@ -247,7 +235,7 @@ const Tasks = ({ tasks, setTasks }) => {
               type="text"
               className="form-control"
               id="editTitle"
-              value={editedTask.title}
+              value={editedTask ? editedTask.title : ""}
               onChange={(e) => handleEditTaskField("title", e.target.value)}
             />
           </div>
@@ -258,7 +246,7 @@ const Tasks = ({ tasks, setTasks }) => {
             <textarea
               className="form-control"
               id="editDescription"
-              value={editedTask.description}
+              value={editedTask ? editedTask.description : ""}
               onChange={(e) =>
                 handleEditTaskField("description", e.target.value)
               }
@@ -272,7 +260,7 @@ const Tasks = ({ tasks, setTasks }) => {
               type="number"
               className="form-control"
               id="editTimeEstimate"
-              value={editedTask.timeEstimate}
+              value={editedTask ? editedTask.timeEstimate : 0}
               onChange={(e) =>
                 handleEditTaskField(
                   "timeEstimate",

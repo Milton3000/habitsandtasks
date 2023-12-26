@@ -9,7 +9,7 @@ const NewHabit = ({ onAddHabit }) => {
     e.preventDefault();
     if (!habit.trim()) {
       alert('Please enter an activity before adding.');
-      return; 
+      return;
     };
 
     const newHabit = {
@@ -24,19 +24,22 @@ const NewHabit = ({ onAddHabit }) => {
 
   return (
     <>
-  <input
-  type="text"
-  placeholder="Activity"
-  value={habit}
-  onChange={(e) => setHabit(e.target.value)}
-  required
-/>
+      <div className="d-flex justify-content-center mt-3">
+        <input
+          className="mx-2 rounded"
+          type="text"
+          placeholder="Activity"
+          value={habit}
+          onChange={(e) => setHabit(e.target.value)}
+          required
+        />
 
-      <select className="mx-2" value={priority} onChange={(e) => setPriority(e.target.value)}>
-        <option value="High">High Priority</option>
-        <option value="Low">Low Priority</option>
-      </select>
-      <button className="mx-2" onClick={addHabit}>Add New Habit</button>
+        <select className="mx-2 rounded" value={priority} onChange={(e) => setPriority(e.target.value)}>
+          <option value="High">High Priority</option>
+          <option value="Low">Low Priority</option>
+        </select>
+        <button className="btn btn-success mx-2" onClick={addHabit}>Add New Habit</button>
+      </div>
     </>
   );
 };

@@ -25,7 +25,7 @@
     width: 30rem;
     max-width: 30rem;
     margin: auto;
-} */
+}
 
 
 /* .habit-content {
@@ -38,14 +38,20 @@
     flex-direction: column;
 } */
 
-/* .habit-card .remove-button {
+.remove-button {
     position: absolute;
     top: 2px;
     right: 2px;
     background-color: red;
     color: white;
     border-radius: 5px;
-} */
+    height: 30px;
+    width: 30px;
+    font-size: 15px;
+}
+.btn-secondary {
+    font-size: 20px;
+}
 
 ul {
     list-style: none;
@@ -55,6 +61,8 @@ ul {
 h2 {
     text-align: center;
 }
+
+
 
 /* .habit-list {
     margin: 0;

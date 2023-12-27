@@ -53,6 +53,12 @@
     font-size: 20px;
 }
 
+.card.m-2 .card-body .card-title {
+    height: 55px;
+    width: 240px;
+    font-size: 20px;
+}
+
 ul {
     list-style: none;
 

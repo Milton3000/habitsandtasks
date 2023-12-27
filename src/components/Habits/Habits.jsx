@@ -140,7 +140,7 @@ const Habits = ({ habits, setHabits }) => {
                       +
                     </button>
                     <button
-                      className="btn btn-danger mx-2"
+                      className="btn btn-danger"
                       onClick={() => resetStreak(index)}
                     >
                       Reset

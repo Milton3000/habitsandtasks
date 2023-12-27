@@ -8,10 +8,10 @@ import Friends from "./components/Friends/Friends"; // Import Friends component
 
 function App() {
   const initialHabits = [
-    { habit: "Programmera", streak: 2, priority: "Low" },
-    { habit: "Prokrastinera", streak: 2, priority: "High" },
-    { habit: "Praktisera", streak: 3, priority: "High" },
-    { habit: "Panta mera", streak: 3, priority: "High" },
+    { habit: "Morning Workout (15 min)", streak: 2, priority: "Low" },
+    { habit: "50 Daily Push-ups", streak: 2, priority: "High" },
+    { habit: "Early Morning", streak: 3, priority: "High" },
+    { habit: "Evening Vitamins", streak: 3, priority: "High" },
   ];
 
   const [habits, setHabits] = useState(initialHabits);

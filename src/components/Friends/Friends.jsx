@@ -131,7 +131,7 @@ const Friends = ({ showButtons = true, maxFriends }) => {
 
   // Render friend list with filtered and sorted data
   return (
-    <div>
+    <div className="friends-container">
       {/* Button to fetch a random user */}
       {showButtons && (
         <button onClick={fetchRandomUser} className="customButton">

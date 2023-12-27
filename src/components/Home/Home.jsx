@@ -13,7 +13,7 @@ const Home = ({ tasks, habits }) => {
         minHeight: "100vh",
       }}
     >
-      <h2 className="mt-4 mb-4 text-center monospace fw-bold">
+      <h2 className="mt-4 mb-4 text-center monospace fw-bold display-4">
         Habits & Tasks
       </h2>
       <div className="card-deck mt-3 row">

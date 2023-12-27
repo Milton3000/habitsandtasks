@@ -101,7 +101,7 @@ const Tasks = ({ tasks, setTasks }) => {
       </div>
 
       <div>
-        <h2 className="monospace fw-bold"> Task List </h2>
+        <h2 className="monospace fw-bold display-6"> Task List </h2>
       </div>
       <nav className="text-center mt-4">
         <ul className="nav justify-content-center">

@@ -80,7 +80,7 @@ const Habits = ({ habits, setHabits }) => {
         }}
       >
         <div className="container mt-4">
-          <h1 className="monospace fw-bold text-center">Habits</h1>
+          <h1 className="monospace fw-bold text-center display-6">Habits</h1>
           <NewHabit onAddHabit={handleAddHabit} />
           <div className="d-flex justify-content-center mt-3">
             <div className="m-2">

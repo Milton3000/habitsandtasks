@@ -6,6 +6,8 @@ import NewTask from "./components/NewTask/NewTask";
 import Habits from "./components/Habits/Habits";
 import Friends from "./components/Friends/Friends";
 import Navigation from "./components/Navigation";
+import DateTimeDisplay from "./components/DateTimeDisplay";
+import BackgroundImage from "./components/BackgroundImage";
 
 function App() {
   const initialHabits = [
@@ -55,58 +57,12 @@ function App() {
     return () => clearInterval(intervalId);
   }, []);
 
-  const formattedDate = new Intl.DateTimeFormat("sv-SE", {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  }).format(currentDateTime);
-
-  const formattedTime = new Intl.DateTimeFormat("sv-SE", {
-    hour: "numeric",
-    minute: "numeric",
-    second: "numeric",
-    timeZone: "Europe/Stockholm",
-  }).format(currentDateTime);
-
   return (
     <>
       <Navigation />
-      <div
-  className="container position-relative"
-  style={{
-    backgroundImage:
-      "url('https://images.unsplash.com/photo-1639056496887-3caaa605609b?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "center",
-    minHeight: "50vh",
-    borderRadius: "10px",
-  }}
->
-
-<div
-  className="card"
-  style={{
-    background: "rgba(255, 255, 255, 0.8)",
-    padding: "20px",
-    borderRadius: "10px",
-    textAlign: "center",
-    position: "absolute",
-    top: "20px",
-    left: "20px",
-    bottom: "20px",
-    width: "auto",
-    maxWidth: "180px",
-  }}
->
-  <h3 className="fw-bold mb-4">Today's Date:</h3>
-  <p className="text-md">{formattedDate}</p>
-  <h3 className="fw-bold mt-4 mb-4">Current Time:</h3>
-  <p className="text-md">{formattedTime}</p>
-</div>
-</div>
-
+      <BackgroundImage>
+        <DateTimeDisplay dateTime={currentDateTime} />
+        </BackgroundImage>
       <Routes>
         <Route path="/" element={<Home tasks={tasks} habits={habits} />} />
         <Route

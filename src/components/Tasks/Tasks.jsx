@@ -163,21 +163,21 @@ const Tasks = ({ tasks, setTasks }) => {
                   <button
                     className={
                       task.completed
-                        ? "btn btn-success"
-                        : "btn btn-secondary mx-2"
+                        ? "btn btn-success btn-sm"
+                        : "btn btn-dark mx-2 btn-sm"
                     }
                     onClick={() => handleCompleteTask(task.id)}
                   >
                     {task.completed ? "Completed" : "Click to Complete"}
                   </button>
                   <button
-                    className="btn btn-danger"
+                    className="btn btn-danger btn-sm"
                     onClick={() => handleDeleteTask(task.id)}
                   >
                     Delete
                   </button>
                   <button
-                    className="btn btn-warning mx-2"
+                    className="btn btn-warning mx-2 btn-sm"
                     onClick={() => handleEditTask(task)}
                   >
                     Edit
@@ -199,19 +199,19 @@ const Tasks = ({ tasks, setTasks }) => {
                   <p> Estimated Time: {task.timeEstimate} minutes</p>
                   <p> Type: {task.taskType}</p>
                   <button
-                    className="btn btn-success"
+                    className="btn btn-success btn-sm"
                     onClick={() => handleUntoggleTask(task.id)}
                   >
                     Completed
                   </button>
                   <button
-                    className="btn btn-danger mx-2"
+                    className="btn btn-danger mx-2 btn-sm"
                     onClick={() => handleDeleteTask(task.id)}
                   >
                     Delete
                   </button>
                   <button
-                    className="btn btn-warning"
+                    className="btn btn-warning btn-sm"
                     onClick={() => handleEditTask(task)}
                   >
                     Edit

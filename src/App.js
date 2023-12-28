@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Home from "./components/Home/Home";
 import Tasks from "./components/Tasks/Tasks";
 import NewTask from "./components/NewTask/NewTask";
 import Habits from "./components/Habits/Habits";
 import Friends from "./components/Friends/Friends";
+import Navigation from "./components/Navigation";
 
 function App() {
   const initialHabits = [
@@ -70,78 +71,40 @@ function App() {
 
   return (
     <>
-      <nav
-        className="navbar navbar-expand-lg navbar-light bg-light"
-        style={{ marginLeft: "auto", marginRight: "auto", display: "table" }}
-      >
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav">
-            <li className="nav-item">
-              <Link to="/" className="nav-link">
-                Home
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/tasks" className="nav-link">
-                Tasks
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/habits" className="nav-link">
-                Habits
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/friends" className="nav-link">
-                Friends
-              </Link>
-            </li>
-          </ul>
-        </div>
-      </nav>
+      <Navigation />
       <div
-        style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1639056496887-3caaa605609b?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
-          backgroundSize: "50%",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center",
-          minHeight: "50vh",
-          display: "flex",
-          alignItems: "flex-start",
-          justifyContent: "flex-start",
-          borderRadius: "10px",
-          position: "relative",
-        }}
-      >
-        <div
-          style={{
-            background: "rgba(255, 255, 255, 0.8)",
-            padding: "20px",
-            borderRadius: "10px",
-            textAlign: "center",
-            position: "absolute",
-            top: "20px",
-            left: "20px",
-          }}
-        >
-          <h3 className="fw-bold mb-4">Today's Date:</h3>
-          <p>{formattedDate}</p>
-          <h3 className="fw-bold mt-4 mb-4">Current Time:</h3>
-          <p>{formattedTime}</p>
-        </div>
-      </div>
+  className="container position-relative"
+  style={{
+    backgroundImage:
+      "url('https://images.unsplash.com/photo-1639056496887-3caaa605609b?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+    minHeight: "50vh",
+    borderRadius: "10px",
+  }}
+>
+
+<div
+  className="card"
+  style={{
+    background: "rgba(255, 255, 255, 0.8)",
+    padding: "20px",
+    borderRadius: "10px",
+    textAlign: "center",
+    position: "absolute",
+    top: "20px",
+    left: "20px",
+    width: "auto",
+    maxWidth: "180px",
+  }}
+>
+  <h3 className="fw-bold mb-4">Today's Date:</h3>
+  <p className="text-md">{formattedDate}</p>
+  <h3 className="fw-bold mt-4 mb-4">Current Time:</h3>
+  <p className="text-md">{formattedTime}</p>
+</div>
+</div>
 
       <Routes>
         <Route path="/" element={<Home tasks={tasks} habits={habits} />} />

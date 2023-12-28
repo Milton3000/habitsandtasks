@@ -10,7 +10,7 @@ const NewHabit = ({ onAddHabit }) => {
     if (!habit.trim()) {
       alert('Please enter an activity before adding.');
       return;
-    };
+    }
 
     const newHabit = {
       habit,
@@ -24,21 +24,34 @@ const NewHabit = ({ onAddHabit }) => {
 
   return (
     <>
-      <div className="d-flex justify-content-center mt-3">
-        <input
-          className="mx-2 rounded"
-          type="text"
-          placeholder="Activity"
-          value={habit}
-          onChange={(e) => setHabit(e.target.value)}
-          required
-        />
-
-        <select className="mx-2 rounded" value={priority} onChange={(e) => setPriority(e.target.value)}>
-          <option value="High">High Priority</option>
-          <option value="Low">Low Priority</option>
-        </select>
-        <button className="btn btn-success mx-2" onClick={addHabit}>Add New Habit</button>
+      <div className="container mt-3">
+        <div className="row justify-content-center">
+          <div className="col-md-4">
+            <input
+              className="form-control mb-2"
+              type="text"
+              placeholder="Activity"
+              value={habit}
+              onChange={(e) => setHabit(e.target.value)}
+              required
+            />
+          </div>
+          <div className="col-md-3">
+            <select
+              className="form-select mb-2"
+              value={priority}
+              onChange={(e) => setPriority(e.target.value)}
+            >
+              <option value="High">High Priority</option>
+              <option value="Low">Low Priority</option>
+            </select>
+          </div>
+          <div className="col-md-3">
+            <button className="btn btn-success w-100" onClick={addHabit}>
+              Add New Habit
+            </button>
+          </div>
+        </div>
       </div>
     </>
   );

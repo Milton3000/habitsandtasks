@@ -118,7 +118,11 @@ const Habits = ({ habits, setHabits }) => {
 
         <div className="container d-flex flex-wrap justify-content-center mt-3">
           {sortedHabits.map((habit, index) => (
-            <div className="card m-2" key={index} style={{ width: "18rem" }}>
+            <div
+              className="card m-2"
+              key={index}
+              style={{ width: "18rem", minWidth: "250px" }}
+            >
               <div className="card-body">
                 <h2 className="card-title">{habit.habit}</h2>
                 <ul className="list-unstyled">

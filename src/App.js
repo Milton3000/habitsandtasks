@@ -95,6 +95,7 @@ function App() {
     position: "absolute",
     top: "20px",
     left: "20px",
+    bottom: "20px",
     width: "auto",
     maxWidth: "180px",
   }}

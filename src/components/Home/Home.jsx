@@ -4,7 +4,8 @@ import { ListGroup } from "react-bootstrap";
 import Friends from "../Friends/Friends";
 
 const Home = ({ tasks, habits }) => {
-  const habitsPreview = habits.slice(0, 3);
+  const highPriorityHabits = habits.filter(habit => habit.priority === 'High');
+  const habitsPreview = highPriorityHabits.slice(0, 3);
   return (
     <div
       className="container text-center mt-4 text-light"
